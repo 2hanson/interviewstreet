@@ -1,3 +1,7 @@
+//problem link:
+//https://www.interviewstreet.com/challenges/dashboard/#problem/4fffc24df25cd
+//
+
 #include <iostream>
 #include <vector>
 
@@ -19,7 +23,7 @@ void init()
     }
 }
 
-void updateyuRank(int cur, int inc)
+void updateRank(int cur, int inc)
 {
     while (cur != -1)
     {
@@ -73,7 +77,7 @@ void solve()
             if ((yuRank[cur]+1)%2 == 0 &&  (yuRank[root]-yuRank[cur])%2 == 0)
             {
                 ++ans;
-                updateyuRank( pIndex[cur], -(yuRank[cur] + 1));
+                updateRank( pIndex[cur], -(yuRank[cur] + 1));
 
                 //
                 if (yuRank[ pIndex[cur] ] == 0)
@@ -102,12 +106,12 @@ int main()
         if (yuRank[u] > yuRank[v])
         {
             pIndex[v] = u;
-            updateyuRank(u, yuRank[v]+1);
+            updateRank(u, yuRank[v]+1);
         }
         else
         {
             pIndex[u] = v;
-            updateyuRank(v, yuRank[u]+1);
+            updateRank(v, yuRank[u]+1);
         }
     }
 
