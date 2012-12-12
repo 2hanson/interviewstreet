@@ -35,7 +35,7 @@ LL solve()
     LL res = 1;
     
     //n*(n-1)*(n-2)*...*3*2*1
-    for (LL cur = 2; cur <= n; ++cur)
+   /* for (LL cur = 2; cur <= n; ++cur)
     {
         LL nod = 1;
         LL exponent;
@@ -50,15 +50,29 @@ LL solve()
             }
             fac[k] += exponent;
         }
+    }*/
+    for (LL k = 0; k < primes.size() && primes[k]<=n; ++k)
+    {
+        fac[k] = 0;
+        LL temp = primes[k];
+
+        while (temp <= n)
+        {
+            fac[k] += n/temp;
+            temp *= primes[k];
+        }
+
     }
+
     for (LL i = 0; i < primes.size(); ++i)
     {
         if (fac[i]!=0)
         {
-            res *= (fac[i]+1);
+            res *= (2*fac[i]+1);
             res %= mod;
         }
     }
+
     return res % mod;
 }
 
